@@ -1,26 +1,536 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-fraunces);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --color-sand: var(--sand);
+  --color-sand-foreground: var(--sand-foreground);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-surface-elevated: var(--surface-elevated);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------------------------------- LIGHT ---------------------------------- */
+:root {
+  /* Surfaces — warm cream tinted toward sand */
+  --background: oklch(0.99 0.005 85);
+  --foreground: oklch(0.18 0.025 260);
+  --surface-elevated: oklch(1 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.025 260);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.025 260);
+
+  /* Brand primary — deep Caribbean navy */
+  --primary: oklch(0.24 0.07 258);
+  --primary-foreground: oklch(0.98 0.005 85);
+  --navy: oklch(0.24 0.07 258);
+  --navy-foreground: oklch(0.98 0.005 85);
+
+  /* Brand accent — warm sand */
+  --sand: oklch(0.88 0.04 78);
+  --sand-foreground: oklch(0.22 0.04 258);
+
+  /* Secondary surface for sections */
+  --secondary: oklch(0.96 0.015 80);
+  --secondary-foreground: oklch(0.24 0.07 258);
+
+  --muted: oklch(0.95 0.012 80);
+  --muted-foreground: oklch(0.48 0.018 258);
+
+  --accent: oklch(0.88 0.04 78);
+  --accent-foreground: oklch(0.22 0.04 258);
+
+  --destructive: oklch(0.58 0.22 25);
+
+  --border: oklch(0.88 0.015 80);
+  --input: oklch(0.92 0.012 80);
+  --ring: oklch(0.45 0.08 258);
+
+  --chart-1: oklch(0.24 0.07 258);
+  --chart-2: oklch(0.55 0.09 220);
+  --chart-3: oklch(0.72 0.07 180);
+  --chart-4: oklch(0.78 0.08 78);
+  --chart-5: oklch(0.62 0.1 50);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.97 0.012 80);
+  --sidebar-foreground: oklch(0.24 0.07 258);
+  --sidebar-primary: oklch(0.24 0.07 258);
+  --sidebar-primary-foreground: oklch(0.98 0.005 85);
+  --sidebar-accent: oklch(0.88 0.04 78);
+  --sidebar-accent-foreground: oklch(0.22 0.04 258);
+  --sidebar-border: oklch(0.88 0.015 80);
+  --sidebar-ring: oklch(0.45 0.08 258);
+}
+
+/* ---------------------------------- DARK ---------------------------------- */
+.dark {
+  /* Layered depth: bg #0a0a0a → card #141414 → elevated #1f1f1f, navy-tinted */
+  --background: oklch(0.13 0.015 260);
+  --foreground: oklch(0.96 0.008 80);
+  --surface-elevated: oklch(0.21 0.02 260);
+
+  --card: oklch(0.17 0.018 260);
+  --card-foreground: oklch(0.96 0.008 80);
+
+  --popover: oklch(0.17 0.018 260);
+  --popover-foreground: oklch(0.96 0.008 80);
+
+  /* In dark mode primary becomes light sand for contrast on dark surfaces */
+  --primary: oklch(0.88 0.04 78);
+  --primary-foreground: oklch(0.18 0.025 260);
+  --navy: oklch(0.32 0.08 258);
+  --navy-foreground: oklch(0.96 0.008 80);
+
+  --sand: oklch(0.78 0.05 78);
+  --sand-foreground: oklch(0.18 0.025 260);
+
+  --secondary: oklch(0.22 0.02 260);
+  --secondary-foreground: oklch(0.96 0.008 80);
+
+  --muted: oklch(0.22 0.02 260);
+  --muted-foreground: oklch(0.7 0.018 80);
+
+  --accent: oklch(0.3 0.06 258);
+  --accent-foreground: oklch(0.96 0.008 80);
+
+  --destructive: oklch(0.7 0.19 22);
+
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.05 78);
+
+  --chart-1: oklch(0.78 0.05 78);
+  --chart-2: oklch(0.65 0.1 220);
+  --chart-3: oklch(0.75 0.08 180);
+  --chart-4: oklch(0.82 0.08 50);
+  --chart-5: oklch(0.6 0.1 30);
+
+  --sidebar: oklch(0.15 0.018 260);
+  --sidebar-foreground: oklch(0.96 0.008 80);
+  --sidebar-primary: oklch(0.88 0.04 78);
+  --sidebar-primary-foreground: oklch(0.18 0.025 260);
+  --sidebar-accent: oklch(0.3 0.06 258);
+  --sidebar-accent-foreground: oklch(0.96 0.008 80);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.78 0.05 78);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-feature-settings: "ss01";
+    letter-spacing: -0.015em;
+  }
+
+  /* Selection — sand background, navy text */
+  ::selection {
+    background: var(--sand);
+    color: var(--navy);
+  }
+
+  /* Smooth in-page anchor scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================ CUSTOM TOOLTIP =============================
+   Use via: data-tooltip="helpful instructive text"
+   Respects light/dark theme via CSS variables.
+   ========================================================================= */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 8px 12px;
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  max-width: 280px;
+  white-space: normal;
+  width: max-content;
+  min-width: 120px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 100;
+  box-shadow: 0 6px 24px -8px oklch(0 0 0 / 18%);
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* =========================== LAYOUT UTILITIES =========================== */
+@layer utilities {
+  .container-prose {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-prose {
+      padding-inline: 3rem;
+    }
+  }
+
+  .container-narrow {
+    max-width: 48rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* Editorial display text — generous tracking + size */
+  .text-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  /* Eyebrow label — small caps, sand-color accent */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  /* Subtle grain texture overlay for hero images */
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(oklch(0 0 0 / 4%) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.4;
+  }
+
+  /* Smooth in-page anchor scrolling */
+  html { scroll-behavior: smooth; }
+
+  /* Cursor image trail card */
+  .trail-card {
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow:
+      0 30px 60px -15px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+    animation: trail-fade 1100ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+    will-change: opacity;
+  }
+
+  @keyframes trail-fade {
+    0%   { opacity: 0; }
+    14%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .trail-card {
+      width: 160px;
+      height: 200px;
+    }
+  }
+
+  /* Hero shrinks into a rounded card as the user scrolls past it.
+     Uses scroll-driven CSS animations (Chrome 115+, Safari 17+, FF 121+).
+     Older browsers gracefully show the static hero. */
+  .hero-shell {
+    transform-origin: center 38%;
+    will-change: transform, border-radius;
+  }
+  @supports (animation-timeline: scroll()) {
+    .hero-shell {
+      animation: hero-collapse linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90vh;
+    }
+    @keyframes hero-collapse {
+      to {
+        transform: scale(0.86);
+        border-radius: 36px;
+      }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-shell { animation: none !important; }
+  }
+
+  /* Horizontal photo marquee */
+  .marquee-track {
+    width: max-content;
+    flex-shrink: 0;
+    will-change: transform;
+  }
+  .marquee-left  { animation: marquee-left  55s linear infinite; }
+  .marquee-right { animation: marquee-right 65s linear infinite; }
+
+  .marquee-photo {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .marquee-photo {
+      width: 220px;
+      height: 160px;
+      border-radius: 12px;
+    }
+  }
+
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-left, .marquee-right { animation: none; }
+  }
+
+  /* ============================ TURTLE SWIM ================================
+     Slow elliptical orbit around the viewport center. Rotation tracks the
+     tangent of motion so the turtle "faces forward" as it swims.
+     ========================================================================= */
+  @keyframes turtle-swim {
+    0%    { transform: translate3d(0vw, -20vh, 0) rotate(0deg); }
+    12.5% { transform: translate3d(-7vw, -14vh, 0) rotate(-45deg); }
+    25%   { transform: translate3d(-10vw, 0vh, 0) rotate(-90deg); }
+    37.5% { transform: translate3d(-7vw, 14vh, 0) rotate(-135deg); }
+    50%   { transform: translate3d(0vw, 20vh, 0) rotate(-180deg); }
+    62.5% { transform: translate3d(7vw, 14vh, 0) rotate(-225deg); }
+    75%   { transform: translate3d(10vw, 0vh, 0) rotate(-270deg); }
+    87.5% { transform: translate3d(7vw, -14vh, 0) rotate(-315deg); }
+    100%  { transform: translate3d(0vw, -20vh, 0) rotate(-360deg); }
+  }
+  .animate-turtle-swim {
+    animation: turtle-swim 32s linear infinite;
+    will-change: transform;
+  }
+
+  /* Flipper-stroke simulation — scaleX pulses suggest fins extending out and pulling in;
+     slight rotation rock mimics body torsion under load. */
+  @keyframes turtle-bob {
+    0%, 100% { transform: rotate(-6deg) scale3d(0.95, 1.02, 1); }
+    50%      { transform: rotate(6deg)  scale3d(1.05, 0.98, 1); }
+  }
+  .animate-turtle-bob {
+    animation: turtle-bob 1.2s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-turtle-swim,
+    .animate-turtle-bob { animation: none; }
+  }
+
+  /* ============================ EDITORIAL SHAPES ============================
+     Three-shape theme: rounded rectangle (default), parallelogram, circle.
+     Use parallelogram clip-paths as a wrapper. Pair with a contrasting fill
+     and drop-shadow on the OUTER wrapper so the silhouette shows clearly.
+     ========================================================================= */
+  .shape-parallel {
+    -webkit-clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%);
+    clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%);
+  }
+  .shape-parallel-flip {
+    -webkit-clip-path: polygon(0% 0%, 82% 0%, 100% 100%, 18% 100%);
+    clip-path: polygon(0% 0%, 82% 0%, 100% 100%, 18% 100%);
+  }
+  /* Wide variant for full-width callouts where a gentler slant reads better */
+  .shape-parallel-wide {
+    -webkit-clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+    clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+  }
+
+  /* Inner content needs extra horizontal padding so text doesn't run into
+     the slanted edges. Apply to the immediate child of a .shape-parallel*
+     wrapper, NOT to the clipped element itself. */
+  .shape-parallel-inner {
+    padding-inline: clamp(3rem, 9vw, 5.5rem);
+  }
+  .shape-parallel-wide-inner {
+    padding-inline: clamp(2rem, 6vw, 4rem);
+  }
+
+  /* Drop-shadow wrapper — apply alongside parallel/circle clipped children
+     so the shadow follows the silhouette instead of being clipped. */
+  .shape-shadow {
+    filter: drop-shadow(0 24px 40px rgba(15, 23, 42, 0.18));
+  }
+  .dark .shape-shadow {
+    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
+  }
+
+  @media (max-width: 768px) {
+    .shape-parallel {
+      -webkit-clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+    }
+    .shape-parallel-flip {
+      -webkit-clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+      clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+    }
+  }
+
+  /* ============================ SCROLL REVEALS ============================
+     Native scroll-driven animations (Chrome 115+, Safari 17+, FF 121+).
+     Fallback: content is visible by default — animations only enhance.
+     ========================================================================= */
+  .reveal-up,
+  .reveal-fade {
+    opacity: 1;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal-up {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 35%;
+      }
+      .reveal-fade {
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 30%;
+      }
+      .reveal-up-stagger > * {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+      }
+      .reveal-up-stagger > *:nth-child(2) { animation-range: entry 5% cover 45%; }
+      .reveal-up-stagger > *:nth-child(3) { animation-range: entry 10% cover 50%; }
+      .reveal-up-stagger > *:nth-child(4) { animation-range: entry 15% cover 55%; }
+
+      /* Slow parallax pan for hero images. Wrap an Image in .parallax-slow */
+      .parallax-slow {
+        animation: parallax-pan linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+        will-change: transform;
+      }
+    }
+  }
+
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(48px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes reveal-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes parallax-pan {
+    from { transform: translateY(-6%) scale(1.08); }
+    to   { transform: translateY(6%) scale(1.08); }
+  }
 }

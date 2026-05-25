@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+Screenshot*.png
+
+# Large media — host on CDN (Vercel Blob / Cloudflare R2 / Mux), not in git
+public/videos/*.mp4
 
 # debug
 npm-debug.log*
