@@ -7,7 +7,7 @@ const FRAMES = [
   {
     src: "/images/resort-aerial-sunset.png",
     eyebrow: "Approach",
-    title: "Eight acres at Point Saline",
+    title: "Eight acres at Point Salines",
     sub: "Waterfront. West-facing. The drone enters from the sea.",
   },
   {

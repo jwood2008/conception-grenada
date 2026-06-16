@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source/working video files (kept locally, not committed — youtube/source exports)
+/*.mp4

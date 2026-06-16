@@ -9,7 +9,7 @@ export const grenada = {
   brandName: "Grenada Lifestyle Properties",
   projectName: "Grenada Lifestyle Clinic, Hotel & Spa",
   shortTagline: "A premier Caribbean health and lifestyle resort.",
-  location: "Point Saline, St. George, Grenada",
+  location: "Point Salines, St. George, Grenada",
   status: "Pre-construction · Land secured",
 
   videoId: "dJL5b5iCLuw",
@@ -119,7 +119,7 @@ export const grenada = {
   // Construction + use of proceeds, from PPM
   build: {
     totalProjectCost: "$94,000,000",
-    landSecured: "The Glade, Point Saline · 8.75 acres · $6,000,000",
+    landSecured: "The Glade, Point Salines · 8.75 acres · $6,000,000",
     cihRaise: "$16,000,000 (this offering)",
     cbiAndOther: "Balance via CBI program funding + other commitments",
     timeline: "Construction expected to complete within 20 months of break-ground",

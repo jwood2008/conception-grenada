@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const VIDEO_SRC = "/videos/grenada-drone-scrub.mp4";
+const VIDEO_SRC = "/videos/grenada-flythrough-v3.mp4";
+const POSTER_SRC = "/videos/grenada-flythrough-v3-poster.jpg";
 
 const SCENES = [
   { line: "It started with a coastline.", at: 0.0 },
-  { line: "Eight acres at Point Saline.", at: 0.12 },
-  { line: "Fourteen villas. One clinic.", at: 0.24 },
-  { line: "A clinic that feels like a retreat.", at: 0.36 },
+  { line: "Eight acres at Point Salines.", at: 0.12 },
+  { line: "Fourteen luxury villas. One clinic.", at: 0.24 },
+  { line: "A wellness retreat designed to rejuvenate.", at: 0.36 },
   { line: "Now open to investors.", at: 0.48 },
 ];
 
@@ -193,7 +194,7 @@ export function CinematicHero() {
           </h2>
           <span className="mt-5 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.45em] text-zinc-600 md:text-[11px]">
             <span aria-hidden className="h-px w-8 bg-zinc-400" />
-            Point Saline · West Indies
+            Point Salines · West Indies
             <span aria-hidden className="h-px w-8 bg-zinc-400" />
           </span>
         </div>
@@ -293,7 +294,7 @@ export function CinematicHero() {
           <video
             ref={videoRef}
             src={VIDEO_SRC}
-            poster="/videos/grenada-drone-poster.jpg"
+            poster={POSTER_SRC}
             muted
             playsInline
             preload="auto"
@@ -303,7 +304,7 @@ export function CinematicHero() {
 
           {/* Sharp landing image overlay — keeps crisp poster visible at scroll=0 */}
           <Image
-            src="/videos/grenada-drone-poster.jpg"
+            src={POSTER_SRC}
             alt=""
             fill
             priority
@@ -337,7 +338,7 @@ export function CinematicHero() {
             </h1>
             <span className="mt-5 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.45em] text-white/85 md:text-[11px]">
               <span aria-hidden className="h-px w-8 bg-white/60" />
-              Point Saline · West Indies
+              Point Salines · West Indies
               <span aria-hidden className="h-px w-8 bg-white/60" />
             </span>
           </div>
@@ -377,7 +378,7 @@ export function CinematicHero() {
               className="text-[10px] font-semibold uppercase tracking-[0.32em] text-white/85"
               style={{ opacity: zoomPhase }}
             >
-              Conception Grenada · Point Saline
+              Conception Grenada · Point Salines
             </span>
             <h2
               className="mt-4 font-display italic text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)]"

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s — Conception Grenada",
   },
   description:
-    "A coastal retreat at Point Saline, Grenada. Fourteen villas, a wellness clinic, and a private stretch of Caribbean coast.",
+    "A coastal retreat at Point Salines, Grenada. Fourteen villas, a wellness clinic, and a private stretch of Caribbean coast.",
   metadataBase: new URL("https://conceptiongrenada.com"),
   openGraph: {
     title: "Conception Grenada",

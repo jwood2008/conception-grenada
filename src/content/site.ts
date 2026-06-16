@@ -1,7 +1,7 @@
 export const site = {
   name: "Conception Grenada",
   shortName: "Conception",
-  tagline: "A coastal retreat at Point Saline.",
+  tagline: "A coastal retreat at Point Salines.",
   description:
     "Fourteen villas, a wellness clinic, and a private stretch of Caribbean coast — opening soon in Grenada.",
   contactEmail: "natracoin@gmail.com",

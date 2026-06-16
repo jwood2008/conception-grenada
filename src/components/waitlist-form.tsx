@@ -81,8 +81,8 @@ export function WaitlistForm({ assetSlug }: { assetSlug: string }) {
           type="submit"
           disabled={state === "submitting"}
           className={cn(
-            "group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground transition",
-            "hover:bg-primary/90 disabled:opacity-70"
+            "group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground transition-colors",
+            "hover:bg-sand hover:text-sand-foreground disabled:opacity-70"
           )}
         >
           {state === "submitting" ? "Adding…" : "Notify me"}
