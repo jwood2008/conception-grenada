@@ -1,10 +1,10 @@
-import { CinematicHero } from "@/components/cinematic-hero";
+import { VideoHero } from "@/components/video-hero";
 import { MarketingSections } from "@/components/marketing-sections";
 
 export default function HomePage() {
   return (
     <>
-      <CinematicHero />
+      <VideoHero />
       <MarketingSections />
     </>
   );
